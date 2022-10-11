@@ -5,6 +5,7 @@
       <div class="col-12" style="background-color: blue;height: 100px"></div>
     </div>
     <div class="column" style="height: 150px">
+      hola mundo
       <div class="col-4 col-md-6">.col-4 .col-md-6</div>
       <div class="col-4 col-md-6">.col-4 .col-md-6</div>
       <div class="col-4 col-md-6">.col-4 .col-md-6</div>
