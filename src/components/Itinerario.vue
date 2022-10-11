@@ -7,9 +7,11 @@
       <div class="col-12" style="background-color: green;height: 100px"></div>
     </div>
     <div class="column" style="height: 150px">
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
+      1.Ceremonia
+      2.Coctel
+      3.Comida
+      4.Baile
+      5.Recena
     </div>
   </div>
 </template>
