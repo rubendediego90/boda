@@ -51,14 +51,14 @@ onMounted(async ()=>{
     </q-page-container>
     <q-footer elevated class="q-pa-md bg-grey-8 ">
       <q-toolbar class="row justify-end">
-        <a href="https://api.whatsapp.com/send?phone=689529238" class="col-6" style="text-decoration: inherit;">
+        <a href="https://api.whatsapp.com/send?phone=+34689529238" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
             avatar="https://cdn.quasar.dev/img/avatar1.jpg"
             :text="['¿Tienes dudas?']"
             sent
           />
         </a>
-        <a href="https://api.whatsapp.com/send?phone=665091123" class="col-6" style="text-decoration: inherit;">
+        <a href="https://api.whatsapp.com/send?phone=+34665091123" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
             avatar="https://cdn.quasar.dev/img/avatar2.jpg"
             :text="['¡Pulsanos!']"
