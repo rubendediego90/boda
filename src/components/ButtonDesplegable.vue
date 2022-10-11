@@ -2,6 +2,7 @@
       <q-fab
         vertical-actions-align="left"
         label-position="bottom"
+        label="Menú"
         glossy
         color="black"
         padding="5px"
