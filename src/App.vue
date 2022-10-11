@@ -37,10 +37,10 @@ onMounted(async ()=>{
       </q-img>
     </q-header>
     <q-page-container>
-      <q-page-sticky position="top-left" :offset="[10, 10]">
+      <q-page-sticky style="z-index:1" position="top-left" :offset="[10, 10]">
         <ButtonDesplegable class="column" @handleTabSelected="handleTabSelected($event)"/>
       </q-page-sticky>
-      <div class="column">
+      <div class="column" style="z-index:0">
         <Asistencia v-if="tabSelected==='Asistencia'"/>
         <Inicio v-if="tabSelected==='Inicio'"/>
         <Itinerario v-if="tabSelected==='Itinerario'"/>
