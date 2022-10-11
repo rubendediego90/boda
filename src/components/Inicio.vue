@@ -10,7 +10,7 @@
   <Title title="Inicio"/>
   <div class="column">
     <div class="col-12" style="padding:1rem">
-      <p class="text-justify">¡Bienvenid@s! Después de vivir juntos en Madrid, un confinamiento extricto, comprar una casa en Alcalá de Henares, el nacimiento de Iván y retrasar una boda por su llegada e ir a cinco bodas que no era la nuestra... </p>
+      <p class="text-justify">¡Bienvenid@s! Después de vivir juntos en Madrid, pasar un confinamiento extricto, comprar una casa en Alcalá de Henares, el nacimiento de Iván, retrasar una boda por su llegada e ir a cinco bodas de las cuales ninguna ha sido la nuestra... </p>
       <p class="text-justify">Nos complace anunciar que el próximo día sábado <strong><u>27 de Mayo de 2023</u></strong> celebraremos nuestro matrimonio junto a nuestros seres queridos.</p>
     </div>
   </div>
@@ -27,9 +27,14 @@
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
     >
-      <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+      <q-carousel-slide :name="1" img-src="../assets/restaurante.jpeg" />
+      <q-carousel-slide :name="2" img-src="../assets/boda-ali.jpeg" />
+      <q-carousel-slide :name="3" img-src="../assets/boda-ana.jpeg" />
+      <q-carousel-slide :name="4" img-src="../assets/cala.jpeg" />
+      <q-carousel-slide :name="5" img-src="../assets/gorra-verde.jpeg" />
+      <q-carousel-slide :name="6" img-src="../assets/monte.jpeg" />
+      <q-carousel-slide :name="7" img-src="../assets/thor.jpeg" />
+      <q-carousel-slide :name="8" img-src="../assets/terrorista.jpeg" />
+>
     </q-carousel>
 </template>
