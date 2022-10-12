@@ -1,15 +1,21 @@
+<script setup>
+  import Title from "./Title.vue"
+  import Mapbox from "./Mapbox.vue"
+
+</script>
+
 <template>
-  <div class="q-pa-md">
-    <div class="column">
-        <h3>Lugar</h3>
-      <div class="col-12" style="background-color: yellow;height: 100px"></div>
+  <Title title="Lugar"/>
+    <div class="col-12 column" style="padding:1rem">
+      <p class="text-justify">Os esperamos en <strong><u>La Vega del Henares</u></strong> donde celebraremos nuestro matrimonio junto a nuestros seres queridos.</p>
     </div>
-    <a href="http://maps.google.com/?q=Carretera Madrid Barcelona, 0 Km 33, N-II, 28801 Alcalá de Henares, Madrid"><p>MAPAAAA</p></a>
+      <Mapbox/>
+      <div style="display: flex;justify-content: center;align-items: center;margin-top: 1rem;">
+        <a href="http://maps.google.com/?q=Carretera Madrid Barcelona, 0 Km 33, N-II, 28801 Alcalá de Henares, Madrid">
+          <q-btn color="black" icon="map" label="Ver en Google Maps" rounded/>
+        </a>
+      </div>
     
-    <div class="column" style="height: 150px">
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
-      <div class="col-4 col-md-6">.col-4 .col-md-6</div>
-    </div>
-  </div>
 </template>
+
+
