@@ -54,14 +54,14 @@ onMounted(async ()=>{
         <a href="https://api.whatsapp.com/send?phone=+34689529238" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
             avatar="https://cdn.quasar.dev/img/avatar1.jpg"
-            :text="['¿Tienes dudas?']"
+            :text="['¿Dudas?']"
             sent
           />
         </a>
         <a href="https://api.whatsapp.com/send?phone=+34665091123" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
             avatar="https://cdn.quasar.dev/img/avatar2.jpg"
-            :text="['¡Pulsanos!']"
+            :text="['¡Clicka!']"
             sent
           />
         </a>  

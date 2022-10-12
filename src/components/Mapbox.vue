@@ -31,7 +31,7 @@ onMounted(()=>{
 </script>
 <style scoped>
     .map-container{
-        width: 98%;
+        width: 100%;
         height: 20rem;
     }
 </style>
