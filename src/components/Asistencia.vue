@@ -87,18 +87,16 @@ import Title from "./Title.vue"
             <q-icon name="group" />
           </template>
        </q-input>
-       <div style="display:flex;flex-direction: row;justify-content: space-between;">
-        <q-select style="width:48%" color="blue-12" v-model="state.numAdultos" :options="numbersOptions" label="Menus adulto">
+        <q-select color="blue-12" v-model="state.numAdultos" :options="numbersOptions" label="Menus adulto">
         <template v-slot:prepend>
           <q-icon name="restaurant_menu" />
         </template>
       </q-select>
-      <q-select style="width:48%" color="blue-12" v-model="state.numNinios" :options="numbersOptions" label="Menus niño">
+      <q-select color="blue-12" v-model="state.numNinios" :options="numbersOptions" label="Menus niño">
         <template v-slot:prepend>
           <q-icon name="local_pizza" />
         </template>
       </q-select>
-       </div>  
 
       <q-input
           v-model="state.alergias"
@@ -108,9 +106,11 @@ import Title from "./Title.vue"
             <q-icon name="bug_report" />
           </template>
        </q-input> 
-       <div style="display:flex;justify-content: space-between;align-items: center">
-        <q-icon style="color:grey; font-size: 140%" name="directions_bus" />
-        <p style="color:grey; font-size: 120%;padding: 0;margin: 0;">¿Irás en el autobus contratado?</p>
+       <div style="display:flex;justify-content: space-between">
+        <div style="display:flex;align-items: center;gap:0.5rem">
+          <q-icon style="color:grey; font-size: 140%" name="directions_bus" />
+          <p style="color:grey; font-size: 120%;padding: 0;margin: 0;">¿Irás en el autobus?</p>
+        </div>
         <q-toggle
             v-model="state.bus"
             checked-icon="check"
