@@ -78,6 +78,7 @@ onMounted(async ()=>{
       @reset="onReset"
       class="q-gutter-md"
     >
+    <input type="text" v-model="name" />
       <q-input
         filled
         v-model="name"
