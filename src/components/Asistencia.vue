@@ -72,7 +72,7 @@ import Title from "./Title.vue"
 <template>
     <Title title="Asistencia"/>
     <div class="row " style="justify-content: center;align-items: center">
-      <div style="width:90%;display: flex;flex-direction: column;gap: 3rem;">
+      <div style="width:90%;display: flex;flex-direction: column;" class="q-gutter-lg">
         <q-input  color="blue-12" v-model="state.nombre" label="Nombre y apellidos">
           <template v-slot:prepend>
             <q-icon name="person" />
@@ -81,7 +81,7 @@ import Title from "./Title.vue"
         <q-input
           v-model="state.acompaniantesNombre"
           type="textarea"
-          label="Nombre y apellidos de tus acompañantes"
+          label="Nombre y apellidos de acompañantes"
         >
           <template v-slot:prepend>
             <q-icon name="group" />
@@ -107,8 +107,8 @@ import Title from "./Title.vue"
           </template>
        </q-input> 
        <div style="display:flex;justify-content: space-between">
-        <div style="display:flex;align-items: center;gap:1.2rem">
-          <q-icon style="color:grey; font-size: 140%" name="directions_bus" />
+        <div style="display:flex;align-items: center;">
+          <q-icon style="color:grey; font-size: 140%;padding-right:1.2rem" name="directions_bus" />
           <p style="color:grey; font-size: 120%;padding: 0;margin: 0;">¿Irás en el autobus?</p>
         </div>
         <q-toggle
@@ -146,7 +146,7 @@ import Title from "./Title.vue"
         <q-card-section>
           <div>
             <p>{{`Nombre y apellidos:${state.nombre}`}}</p>
-            <p>{{`Nombre y apellidos de tus acompañantes:${state.acompaniantesNombre}`}}</p>
+            <p>{{`Nombre y apellidos de acompañantes:${state.acompaniantesNombre}`}}</p>
             <p>{{`Número de menus de adulto:${state.numAdultos.value}`}}</p>
             <p>{{`Número de menus de niño:${state.numNinios.value}`}}</p>
             <p>{{`Alergias e intolerancias:${state.alergias}`}}</p>
