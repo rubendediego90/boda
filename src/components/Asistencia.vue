@@ -1,81 +1,68 @@
 <script setup>
-  import { reactive,ref } from "vue";
+import { reactive,ref } from "vue";
 import Title from "./Title.vue"
+import { useQuasar } from 'quasar'
+import {postGuest} from '../../src/api/guest.api'
+const $q = useQuasar()
 
-  const state = reactive({
+  const stateDefault = reactive({
     nombre:null,
     acompaniantesNombre:null,
     numAdultos:null,
     numNinios:null,
     alergias:null,
     bus:false,
-    observaciones:''
+    observaciones:null
   })
-  const numbersOptions = [
-  {
-      label:0,
-      value:0
-    },    {
-      label:1,
-      value:1
-    },
 
-    {
-      label:2,
-      value:2
-    },
-    {
-      label:3,
-      value:3
-    },
-    {
-      label:4,
-      value:4
-    },
-    {
-      label:5,
-      value:5
-    },
-    {
-      label:6,
-      value:6
-    },
-    {
-      label:7,
-      value:7
-    },
-    {
-      label:8,
-      value:8
-    },
-    {
-      label:9,
-      value:9
-    },
-    {
-      label:10,
-      value:10
-    },
-  ]
+  const state = reactive({...stateDefault})
+
+  const numbersOptions = [0,1,2,3,4,5,6,7,8,9]
 
   const confirmDialog = ref(false)
+  const okDialog = ref(false)
 
   const handleConfirmDialog = (param) => confirmDialog.value = param
 
-  const handleRequest = () =>{
-    console.log("Post")
+  const handleRequest = async () =>{
+    try{
+      const resp = await postGuest(state)
+      if(resp.status === 200){
+        okDialog.value=true
+      }else{
+        //TODO:Rechazo
+        console.log('error')
+      }
+    }
+    catch(error){
+      console.error(error)
+    }
     handleConfirmDialog(false)
   }
+
+  const onSubmit = () =>{
+    handleConfirmDialog(true)
+  }
+
+  const checkValue = (value) =>value === null ? ' - ' : value
+
 </script>
-
-
 <template>
     <Title title="Asistencia"/>
     <div class="row " style="justify-content: center;align-items: center">
-      <div style="width:90%;display: flex;flex-direction: column;" class="q-gutter-lg">
-        <q-input  color="blue-12" v-model="state.nombre" label="Nombre y apellidos">
+      <q-form
+        @submit="onSubmit"
+        class="q-gutter-lg"
+        style="width:90%;display: flex;flex-direction: column;"
+      >
+        <q-input color="blue-12" v-model="state.nombre" lazy-rules label-slot
+        :rules="[ val => val && val.length > 0 || 'Campo obligatorio']">
           <template v-slot:prepend>
             <q-icon name="person" />
+          </template>
+          <template v-slot:label>
+            Nombre y apellidos
+            <span class="text-weight-bold text-deep-orange">*</span>
           </template>
         </q-input>
         <q-input
@@ -87,17 +74,30 @@ import Title from "./Title.vue"
             <q-icon name="group" />
           </template>
        </q-input>
-        <q-select color="blue-12" v-model="state.numAdultos" :options="numbersOptions" label="Menus adulto">
+        <q-select color="blue-12" v-model="state.numAdultos" :options="numbersOptions" lazy-rules label-slot
+        :rules="[
+          val => val !== null && val !== '' || 'Campo obligatorio'
+        ]">
         <template v-slot:prepend>
           <q-icon name="restaurant_menu" />
         </template>
+        <template v-slot:label>
+          Menus adulto
+            <span class="text-weight-bold text-deep-orange">*</span>
+          </template>
       </q-select>
-      <q-select color="blue-12" v-model="state.numNinios" :options="numbersOptions" label="Menus niño">
+      <q-select color="blue-12" v-model="state.numNinios" :options="numbersOptions" lazy-rules label-slot
+        :rules="[
+          val => val !== null && val !== '' || 'Campo obligatorio'
+        ]">
         <template v-slot:prepend>
           <q-icon name="local_pizza" />
         </template>
+        <template v-slot:label>
+          Menus niño
+            <span class="text-weight-bold text-deep-orange">*</span>
+          </template>
       </q-select>
-
       <q-input
           v-model="state.alergias"
           label="Alergias e intolerancias"
@@ -129,29 +129,24 @@ import Title from "./Title.vue"
        </q-input>
 
        <div style="display:flex;justify-content:center">
-
-         <q-btn style="width: 50%;" color="black" icon="mail_outline" label="Enviar" rounded @click="handleConfirmDialog(true)"/>
+        <q-btn style="width: 45%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded />
        </div>
        <br>
+      </q-form>
       </div>
-    </div>
     <q-dialog v-model="confirmDialog">
       <q-card>
-        <q-card-section class="row items-center q-pb-none">
-          <div style="font-weight:900">¡Por favor, revisa la información!</div>
-          <q-space />
-          <q-btn icon="close" flat round dense v-close-popup />
-        </q-card-section>
+  
 
         <q-card-section>
           <div>
             <p>{{`Nombre y apellidos:${state.nombre}`}}</p>
-            <p>{{`Nombre y apellidos de acompañantes:${state.acompaniantesNombre}`}}</p>
-            <p>{{`Número de menus de adulto:${state.numAdultos.value}`}}</p>
-            <p>{{`Número de menus de niño:${state.numNinios.value}`}}</p>
-            <p>{{`Alergias e intolerancias:${state.alergias}`}}</p>
+            <p>{{`Nombre y apellidos de acompañantes:${checkValue(state.acompaniantesNombre)}`}}</p>
+            <p>{{`Número de menus de adulto:${state.numAdultos}`}}</p>
+            <p>{{`Número de menus de niño:${state.numNinios}`}}</p>
+            <p>{{`Alergias e intolerancias:${checkValue(state.alergias)}`}}</p>
             <p>{{`Irás en autobus:${state.bus ? 'Sí' : 'No'}`}}</p>
-            <p>{{`Otra información:${state.observaciones}`}}</p>
+            <p>{{`Otra información:${checkValue(state.observaciones)}`}}</p>
           </div>
           <div style="font-weight:900;display: flex;justify-content: center;">
             <p>
@@ -166,6 +161,19 @@ import Title from "./Title.vue"
         </q-card-section>
       </q-card>
     </q-dialog>
+    <q-dialog v-model="okDialog">
+      <q-card>
+             <q-card-section class="row items-center q-pb-none">
+          <div style="font-weight:900">¡ok!</div>
+          <q-space />
+          <q-btn icon="close" flat round dense v-close-popup />
+        </q-card-section>
+        <q-card-section>
+          <p>Enviado correctamente</p>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
 </template>
 
 
