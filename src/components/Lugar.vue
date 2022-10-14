@@ -11,7 +11,7 @@
     </div>
       <Mapbox/>
       <div style="display: flex;justify-content: center;align-items: center;margin-top: 1rem;">
-        <a href="http://maps.google.com/?q=Carretera Madrid Barcelona, 0 Km 33, N-II, 28801 Alcalá de Henares, Madrid">
+        <a href="http://maps.google.com/?q=Carretera Madrid Barcelona, 0 Km 33, N-II, 28801 Alcalá de Henares, Madrid" style="text-decoration: none;">
           <q-btn color="black" icon="map" label="Ir a Google Maps" rounded/>
         </a>
       </div>

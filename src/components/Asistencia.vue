@@ -72,7 +72,7 @@ import Title from "./Title.vue"
 <template>
     <Title title="Asistencia"/>
     <div class="row " style="justify-content: center;align-items: center">
-      <div style="width:90%;display: flex;flex-direction: column;gap: 1rem;">
+      <div style="width:90%;display: flex;flex-direction: column;gap: 3rem;">
         <q-input  color="blue-12" v-model="state.nombre" label="Nombre y apellidos">
           <template v-slot:prepend>
             <q-icon name="person" />
@@ -107,7 +107,7 @@ import Title from "./Title.vue"
           </template>
        </q-input> 
        <div style="display:flex;justify-content: space-between">
-        <div style="display:flex;align-items: center;gap:0.5rem">
+        <div style="display:flex;align-items: center;gap:1.2rem">
           <q-icon style="color:grey; font-size: 140%" name="directions_bus" />
           <p style="color:grey; font-size: 120%;padding: 0;margin: 0;">¿Irás en el autobus?</p>
         </div>
