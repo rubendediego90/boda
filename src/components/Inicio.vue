@@ -10,7 +10,7 @@
   <Title title="Inicio"/>
     <div class="col-12 column" style="padding:1rem">
       <p class="text-justify">¡Bienvenid@s! Después de vivir juntos en Madrid, pasar un confinamiento extricto, comprar una casa en Alcalá de Henares, el nacimiento de Iván, retrasar una boda por su llegada e ir a cinco bodas de las cuales ninguna ha sido la nuestra... </p>
-      <p class="text-justify">Nos complace anunciar que el próximo día sábado <strong><u>27 de Mayo de 2023</u></strong> celebraremos nuestro matrimonio junto a nuestros seres queridos.</p>
+      <p class="text-justify">Nos alegra anunciar que el próximo día sábado <strong><u>27 de Mayo de 2023</u></strong> celebraremos nuestro matrimonio junto a nuestros seres queridos.</p>
     </div>
 
     <q-carousel

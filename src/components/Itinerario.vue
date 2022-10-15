@@ -19,25 +19,25 @@
         title="Coctel"
         subtitle="14:30H"
         icon="tapas"
-        body="Se servirá un magnífico coctel de bienvenida, en el cual habrá comida y bebida."
+        body="Se servirá un magnífico coctel, en el cual habrá comida y bebida."
       />
       <q-timeline-entry
         title="Comida"
-        subtitle="16:00"
+        subtitle="16:00H"
         icon="restaurant"
         color="green"
-        body="Momento de disfrutar del menú, cuanta con dos platos y postre."
+        body="Momento de disfrutar del menú, consta con dos platos y postre."
       />
       <q-timeline-entry
         title="Fiesta"
-        subtitle="18:00"
+        subtitle="18:00H"
         icon="nightlife"
         body="Será hora de bailar y brindar para celebrar el matrimonio."
         color="red"
       />
       <q-timeline-entry
         title="Recena"
-        subtitle="21:00"
+        subtitle="21:00H"
         color="orange"
         icon="lunch_dining"
         body="Una hora antes de finalizar la fiesta habrá una pequeña sorpresa para cenar."

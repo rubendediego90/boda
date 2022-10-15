@@ -17,7 +17,9 @@ const $q = useQuasar()
 
   const state = reactive({...stateDefault})
 
-  const numbersOptions = [0,1,2,3,4,5,6,7,8,9]
+  const numbersOptionsChild = [0,1,2,3,4,5,6,7,8,9]
+
+  const numbersOptionsParent = [1,2,3,4,5,6,7,8,9]
 
   const confirmDialog = ref(false)
   const okDialog = ref(false)
@@ -30,12 +32,13 @@ const $q = useQuasar()
       if(resp.status === 200){
         okDialog.value=true
       }else{
-        //TODO:Rechazo
+        triggerNegative()
         console.log('error')
       }
     }
     catch(error){
       console.error(error)
+      triggerNegative()
     }
     handleConfirmDialog(false)
   }
@@ -46,6 +49,13 @@ const $q = useQuasar()
 
   const checkValue = (value) =>value === null ? ' - ' : value
 
+  function triggerNegative () {
+        $q.notify({
+          type: 'negative',
+          message: 'Ocurrió un error, por favor contacta con nosotros.'
+        })
+      }
+
 </script>
 <template>
     <Title title="Asistencia"/>
@@ -53,7 +63,7 @@ const $q = useQuasar()
       <q-form
         @submit="onSubmit"
         class="q-gutter-lg"
-        style="width:90%;display: flex;flex-direction: column;"
+        style="width:95%;display: flex;flex-direction: column;"
       >
         <q-input color="blue-12" v-model="state.nombre" lazy-rules label-slot
         :rules="[ val => val && val.length > 0 || 'Campo obligatorio']">
@@ -74,7 +84,7 @@ const $q = useQuasar()
             <q-icon name="group" />
           </template>
        </q-input>
-        <q-select color="blue-12" v-model="state.numAdultos" :options="numbersOptions" lazy-rules label-slot
+        <q-select color="blue-12" v-model="state.numAdultos" :options="numbersOptionsParent" lazy-rules label-slot
         :rules="[
           val => val !== null && val !== '' || 'Campo obligatorio'
         ]">
@@ -86,7 +96,7 @@ const $q = useQuasar()
             <span class="text-weight-bold text-deep-orange">*</span>
           </template>
       </q-select>
-      <q-select color="blue-12" v-model="state.numNinios" :options="numbersOptions" lazy-rules label-slot
+      <q-select color="blue-12" v-model="state.numNinios" :options="numbersOptionsChild" lazy-rules label-slot
         :rules="[
           val => val !== null && val !== '' || 'Campo obligatorio'
         ]">
@@ -129,15 +139,13 @@ const $q = useQuasar()
        </q-input>
 
        <div style="display:flex;justify-content:center">
-        <q-btn style="width: 45%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded />
+        <q-btn style="width: 60%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded />
        </div>
        <br>
       </q-form>
       </div>
-    <q-dialog v-model="confirmDialog">
+    <q-dialog v-model="confirmDialog" transition-show="rotate" transition-hide="rotate" transition-duration="500">
       <q-card>
-  
-
         <q-card-section>
           <div>
             <p>{{`Nombre y apellidos:${state.nombre}`}}</p>
@@ -164,12 +172,16 @@ const $q = useQuasar()
     <q-dialog v-model="okDialog">
       <q-card>
              <q-card-section class="row items-center q-pb-none">
-          <div style="font-weight:900">¡ok!</div>
+          <div style="font-weight:900">¡Todo ha ido correctamente!</div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
         <q-card-section>
-          <p>Enviado correctamente</p>
+          <p>Muchas gracias por ayudarnos con el registro.</p>
+          <q-img
+          src="../assets/star-wars.jpg"
+          style="width:100%;height:100%"
+        />
         </q-card-section>
       </q-card>
     </q-dialog>

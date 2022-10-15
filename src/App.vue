@@ -13,6 +13,7 @@ import {getGuest} from '../src/api/guest.api'
 const tabSelected = ref('Inicio')
 
 const handleTabSelected = (event) =>{
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
   tabSelected.value = event
 }
 
