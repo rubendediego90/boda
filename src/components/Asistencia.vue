@@ -21,12 +21,15 @@ const $q = useQuasar()
 
   const numbersOptionsParent = [1,2,3,4,5,6,7,8,9]
 
+  const loading = ref(false)
+
   const confirmDialog = ref(false)
   const okDialog = ref(false)
 
   const handleConfirmDialog = (param) => confirmDialog.value = param
 
   const handleRequest = async () =>{
+    loading.value=true
     try{
       const resp = await postGuest(state)
       if(resp.status === 200){
@@ -40,6 +43,7 @@ const $q = useQuasar()
       console.error(error)
       triggerNegative()
     }
+    loading.value=false
     handleConfirmDialog(false)
   }
 
@@ -146,7 +150,7 @@ const $q = useQuasar()
       </div>
     <q-dialog v-model="confirmDialog" transition-show="rotate" transition-hide="rotate" transition-duration="500">
       <q-card>
-        <q-card-section>
+        <q-card-section v-if="!loading">
           <div>
             <p>{{`Nombre y apellidos:${state.nombre}`}}</p>
             <p>{{`Nombre y apellidos de acompañantes:${checkValue(state.acompaniantesNombre)}`}}</p>
@@ -167,6 +171,17 @@ const $q = useQuasar()
             <q-btn style="width: 40%;" color="black" icon="mail_outline" label="Sí" rounded @click="handleRequest()"/>
           </div>
         </q-card-section>
+        <q-card-section v-else>
+          <q-circular-progress
+            indeterminate
+            rounded
+            size="10rem"
+            color="blue"
+            class="q-ma-md"
+          />
+        </q-card-section>
+
+
       </q-card>
     </q-dialog>
     <q-dialog v-model="okDialog">
