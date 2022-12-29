@@ -1,6 +1,7 @@
 <script setup>
   import Title from "./Title.vue"
-  import { ref } from "vue";
+  import { ref,onMounted } from "vue";
+  import {postMusic,getMusic} from '../../src/api/music.api'
 
   const song = ref('')
 
@@ -8,6 +9,30 @@
    console.log('add music')
   }
 
+  let delayTimer;
+
+  const search = () => {
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(function() {
+        itemsFiltred.value = itemsBbdd.value.filter(e => removeAccents(e.nombre).toLowerCase().includes(removeAccents(song.value).toLowerCase()))
+        console.log(itemsFiltred.value)
+    }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
+}
+
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+} 
+
+  const itemsBbdd = ref([])
+  const itemsFiltred = ref([])
+
+  onMounted(async()=>{
+    const resp = await getMusic()
+    itemsBbdd.value=resp.data.musics
+  })
+  const columns = [
+  { name: 'nombre', align: 'center', label: 'Nombre', field: 'nombre', sortable: true },
+]
 </script>
 
 <template>
@@ -21,7 +46,7 @@
         class="q-gutter-md"
         style="width:95%;display: flex;flex-direction: column;"
       >
-        <q-input color="blue-12" v-model="song" lazy-rules label-slot
+        <q-input @keydown="search()" color="blue-12" v-model="song" lazy-rules label-slot
         :rules="[ val => val && val.length > 0 || 'Campo obligatorio']">
           <template v-slot:prepend>
             <q-icon name="music_note" />
@@ -37,4 +62,22 @@
        <br>
       </q-form>
     </div>
+    <q-table
+      style="margin:1rem"
+      :rows="itemsFiltred"
+      :columns="columns"
+      row-key="name"
+      flat
+      bordered
+      hide-header
+      hide-bottom
+    />
 </template>
+<style lang="scss">
+tbody tr:nth-child(odd) td{
+    background-color: #FFF4B0;
+}
+tbody tr:nth-child(even) td{
+  background-color: white;
+}
+</style>
