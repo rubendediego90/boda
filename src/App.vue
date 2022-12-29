@@ -56,7 +56,7 @@ onMounted(async ()=>{
       <q-toolbar class="row justify-end">
         <a href="https://api.whatsapp.com/send?phone=+34689529238" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
-            avatar="src/assets/avatar-ruben.jpeg"
+            avatar="./assets/avatar-ruben.jpeg"
             :text="['¿Dudas?']"
             sent
           />
