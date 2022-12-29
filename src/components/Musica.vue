@@ -36,7 +36,6 @@
     }finally{
       loading.value=false
     }
-    handleConfirmDialog(false)
   }
   
   let delayTimer;
