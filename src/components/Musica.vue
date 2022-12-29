@@ -4,9 +4,28 @@
   import {postMusic,getMusic} from '../../src/api/music.api'
 
   const song = ref('')
+  const okDialog = ref(false)
+  const loading = ref(false)
 
-  const onSubmit = () =>{
-   console.log('add music')
+  const onSubmit = async () =>{
+    loading.value=true
+    try{
+      const resp = await postMusic({nombre:song.value})
+      if(resp.status === 200){
+        okDialog.value=true
+        itemsBbdd.value.unshift({nombre:song.value})
+        itemsFiltred.value.unshift({nombre:song.value})
+      }else{
+        triggerNegative()
+        console.log('error')
+      }
+    }
+    catch(error){
+      console.error(error)
+      triggerNegative()
+    }
+    loading.value=false
+    handleConfirmDialog(false)
   }
 
   let delayTimer;
@@ -15,7 +34,6 @@
     clearTimeout(delayTimer);
     delayTimer = setTimeout(function() {
         itemsFiltred.value = itemsBbdd.value.filter(e => removeAccents(e.nombre).toLowerCase().includes(removeAccents(song.value).toLowerCase()))
-        console.log(itemsFiltred.value)
     }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
 }
 
@@ -70,6 +88,22 @@ const removeAccents = (str) => {
       hide-header
       hide-bottom
     />
+    <q-dialog v-model="okDialog">
+      <q-card>
+        <q-card-section class="row items-center q-pb-none">
+          <div style="font-weight:900">¡Todo ha ido correctamente!</div>
+          <q-space />
+          <q-btn icon="close" flat round dense v-close-popup />
+        </q-card-section>
+        <q-card-section>
+          <p>Muchas gracias por ayudarnos con la música.</p>
+          <q-img
+          src="../assets/spiderman.jpeg"
+          style="width:100%;height:100%"
+        />
+        </q-card-section>
+      </q-card>
+    </q-dialog>
 </template>
 <style lang="scss">
 tbody tr:nth-child(odd) td{
