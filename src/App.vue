@@ -7,6 +7,7 @@ import Itinerario from "./components/Itinerario.vue"
 import Lugar from "./components/Lugar.vue"
 import Musica from "./components/Musica.vue"
 import Regalos from "./components/Regalos.vue"
+import Bus from "./components/Bus.vue"
 import { onMounted, ref } from 'vue'
 import {getGuest} from '../src/api/guest.api'
 
@@ -48,6 +49,7 @@ onMounted(async ()=>{
         <Lugar v-if="tabSelected==='Lugar'"/>
         <Musica v-if="tabSelected==='Música'"/>
         <Regalos v-if="tabSelected==='Regalos'"/>
+        <Bus v-if="tabSelected==='Autobus'"/>
       </div>
     </q-page-container>
     <q-footer elevated class="q-pa-md bg-grey-8 ">
