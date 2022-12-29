@@ -2,13 +2,23 @@
   import Title from "./Title.vue"
   import { ref,onMounted } from "vue";
   import {postMusic,getMusic} from '../../src/api/music.api'
-
   const song = ref('')
   const okDialog = ref(false)
   const loading = ref(false)
+  const loadingFirst = ref(false)
+
+  const pagination = ref({
+      page: 1,
+      rowsPerPage: 5
+  })
+
+  const columns = [
+    { name: 'nombre', align: 'center', label: 'Nombre', field: 'nombre' },
+  ]
 
   const onSubmit = async () =>{
     loading.value=true
+
     try{
       const resp = await postMusic({nombre:song.value})
       if(resp.status === 200){
@@ -23,11 +33,12 @@
     catch(error){
       console.error(error)
       triggerNegative()
+    }finally{
+      loading.value=false
     }
-    loading.value=false
     handleConfirmDialog(false)
   }
-
+  
   let delayTimer;
 
   const search = () => {
@@ -35,7 +46,7 @@
     delayTimer = setTimeout(function() {
         itemsFiltred.value = itemsBbdd.value.filter(e => removeAccents(e.nombre).toLowerCase().includes(removeAccents(song.value).toLowerCase()))
     }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
-}
+  }
 
 const removeAccents = (str) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -48,10 +59,9 @@ const removeAccents = (str) => {
     const resp = await getMusic()
     itemsBbdd.value=resp.data.musics
     itemsFiltred.value=resp.data.musics
+    pagination.value.rowsPerPage = itemsBbdd.value.length
+    loadingFirst.value=true
   })
-  const columns = [
-  { name: 'nombre', align: 'center', label: 'Nombre', field: 'nombre', sortable: true },
-]
 </script>
 
 <template>
@@ -75,10 +85,11 @@ const removeAccents = (str) => {
           </template>
         </q-input>
 
-        <q-btn type="submit" color="black" icon="playlist_add" rounded style="height:100%"/>
+        <q-btn type="submit" color="black" icon="playlist_add" rounded style="height:100%" :disable="loading"/>
       </q-form>
     </div>
     <q-table
+    v-if="loadingFirst"
       style="margin:1rem"
       :rows="itemsFiltred"
       :columns="columns"
@@ -86,8 +97,9 @@ const removeAccents = (str) => {
       flat
       bordered
       hide-header
+      v-model:pagination="pagination"
       hide-bottom
-    />
+      />
     <q-dialog v-model="okDialog">
       <q-card>
         <q-card-section class="row items-center q-pb-none">
