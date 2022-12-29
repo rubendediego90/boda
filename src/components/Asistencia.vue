@@ -15,11 +15,11 @@ const $q = useQuasar()
     observaciones:null
   })
 
-  const print = ()=>{
+  const scroll = ()=>{
     setTimeout(() => {
       let isError = document.getElementsByClassName("text-negative");
       if (isError.length > 0) 
-          document.getElementsByClassName("text-negative")[0].focus()
+          document.getElementsByClassName("text-negative")[0].scrollIntoView({behavior:'smooth',block:'center' })
     }, "0")
   }
 
@@ -149,9 +149,8 @@ const $q = useQuasar()
             <q-icon name="contact_support" />
           </template>
        </q-input>
-
        <div style="display:flex;justify-content:center">
-        <q-btn style="width: 60%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded @click="print()"/>
+        <q-btn style="width: 60%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded @click="scroll()"/>
        </div>
        <br>
       </q-form>
