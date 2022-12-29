@@ -119,8 +119,10 @@ const removeAccents = (str) => {
 <style lang="scss">
 tbody tr:nth-child(odd) td{
     background-color: #FFF4B0;
+    white-space: initial;
 }
 tbody tr:nth-child(even) td{
   background-color: white;
+  white-space: initial;
 }
 </style>
