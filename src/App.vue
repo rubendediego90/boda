@@ -63,7 +63,7 @@ onMounted(async ()=>{
         </a>
         <a href="https://api.whatsapp.com/send?phone=+34665091123" class="col-6" style="text-decoration: inherit;">
           <q-chat-message
-            avatar="https://cdn.quasar.dev/img/avatar2.jpg"
+          avatar="./assets/avatar-isa.jpeg"
             :text="['¡Clicka!']"
             sent
           />
