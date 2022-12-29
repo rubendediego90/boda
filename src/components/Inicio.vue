@@ -26,13 +26,15 @@
       @mouseleave="autoplay = true"
     >
       <q-carousel-slide :name="1" img-src="../assets/restaurante.jpeg" />
-      <q-carousel-slide :name="2" img-src="../assets/boda-ali.jpeg" />
-      <q-carousel-slide :name="3" img-src="../assets/boda-ana.jpeg" />
-      <q-carousel-slide :name="4" img-src="../assets/cala.jpeg" />
-      <q-carousel-slide :name="5" img-src="../assets/gorra-verde.jpeg" />
-      <q-carousel-slide :name="6" img-src="../assets/monte.jpeg" />
-      <q-carousel-slide :name="7" img-src="../assets/thor.jpeg" />
-      <q-carousel-slide :name="8" img-src="../assets/terrorista.jpeg" />
+      <q-carousel-slide :name="2" img-src="../assets/boda-ana.jpeg" />
+      <q-carousel-slide :name="3" img-src="../assets/torre.jpeg" />
+      <q-carousel-slide :name="4" img-src="../assets/mont-michel.jpeg" />
+      <q-carousel-slide :name="5" img-src="../assets/cala.jpeg" />
+      <q-carousel-slide :name="6" img-src="../assets/gorra-verde.jpeg" />
+      <q-carousel-slide :name="7" img-src="../assets/monte.jpeg" />
+      <q-carousel-slide :name="8" img-src="../assets/thor.jpeg" />
+      <q-carousel-slide :name="9" img-src="../assets/boda-ali.jpeg" />
+      <q-carousel-slide :name="10" img-src="../assets/terrorista.jpeg" />
 >
     </q-carousel>
 </template>
