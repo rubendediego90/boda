@@ -17,6 +17,7 @@
         <q-fab-action @click="$emit('handleTabSelected','Itinerario')" color="accent"  icon="alarm" label="Itinerario" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
         <q-fab-action @click="$emit('handleTabSelected','Regalos')" color="warning"  icon="card_giftcard" label="Regalos" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
         <q-fab-action @click="$emit('handleTabSelected','Música')" color="accent"  icon="music_note" label="Música" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
+        <q-fab-action @click="$emit('handleTabSelected','Autobus')" color="warning"  icon="airport_shuttle" label="Autobus" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
       </q-fab>
 </template>
 
