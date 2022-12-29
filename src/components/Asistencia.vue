@@ -15,6 +15,14 @@ const $q = useQuasar()
     observaciones:null
   })
 
+  const print = ()=>{
+    setTimeout(() => {
+      let isError = document.getElementsByClassName("text-negative");
+      if (isError.length > 0) 
+          document.getElementsByClassName("text-negative")[0].focus()
+    }, "0")
+  }
+
   const state = reactive({...stateDefault})
 
   const numbersOptionsChild = [0,1,2,3,4,5,6,7,8,9]
@@ -82,7 +90,7 @@ const $q = useQuasar()
         <q-input
           v-model="state.acompaniantesNombre"
           type="textarea"
-          label="Nombre y apellidos de acompañantes"
+          label="Nombre y apellidos acompañantes"
         >
           <template v-slot:prepend>
             <q-icon name="group" />
@@ -143,22 +151,29 @@ const $q = useQuasar()
        </q-input>
 
        <div style="display:flex;justify-content:center">
-        <q-btn style="width: 60%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded />
+        <q-btn style="width: 60%;" type="submit" color="black" icon="mail_outline" label="Enviar" rounded @click="print()"/>
        </div>
        <br>
       </q-form>
       </div>
     <q-dialog v-model="confirmDialog" transition-show="rotate" transition-hide="rotate" transition-duration="500">
       <q-card>
-        <q-card-section v-if="!loading">
+        <q-card-section v-if="!loading" style="overflow-x: hidden;">
           <div>
-            <p>{{`Nombre y apellidos:${state.nombre}`}}</p>
-            <p>{{`Nombre y apellidos de acompañantes:${checkValue(state.acompaniantesNombre)}`}}</p>
-            <p>{{`Número de menus de adulto:${state.numAdultos}`}}</p>
-            <p>{{`Número de menus de niño:${state.numNinios}`}}</p>
-            <p>{{`Alergias e intolerancias:${checkValue(state.alergias)}`}}</p>
-            <p>{{`Irás en autobus:${state.bus ? 'Sí' : 'No'}`}}</p>
-            <p>{{`Otra información:${checkValue(state.observaciones)}`}}</p>
+            <span lang="de" class="hyphens">Nombre y apellidos:</span>
+            <p lang="de" class="hyphens">{{`${state.nombre}`}}</p>
+            <span lang="de" class="hyphens">Nombre y apellidos de acompañantes:</span>
+            <p lang="de" class="hyphens">{{`${checkValue(state.acompaniantesNombre)}`}}</p>
+            <span lang="de" class="hyphens">Número de menus de adulto:</span>
+            <p lang="de" class="hyphens">{{`${state.numAdultos}`}}</p>
+            <span lang="de" class="hyphens">Número de menus de niño:</span>
+            <p lang="de" class="hyphens">{{`${state.numNinios}`}}</p>
+            <span lang="de" class="hyphens">Alergias e intolerancias:</span>
+            <p lang="de" class="hyphens">{{`${checkValue(state.alergias)}`}}</p>
+            <span lang="de" class="hyphens">Irás en autobus:</span>
+            <p lang="de" class="hyphens">{{`${state.bus ? 'Sí' : 'No'}`}}</p>
+            <span lang="de" class="hyphens">Otra información:</span>
+            <p lang="de" class="hyphens">{{`${checkValue(state.observaciones)}`}}</p>
           </div>
           <div style="font-weight:900;display: flex;justify-content: center;">
             <p>
@@ -202,6 +217,10 @@ const $q = useQuasar()
     </q-dialog>
 
 </template>
-
+<style scoped>
+.hyphens {
+  overflow-wrap: break-word;
+}
+</style>
 
 
