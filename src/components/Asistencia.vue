@@ -159,19 +159,19 @@ const $q = useQuasar()
       <q-card>
         <q-card-section v-if="!loading" style="overflow-x: hidden;">
           <div>
-            <span lang="de" class="hyphens">Nombre y apellidos:</span>
+            <span lang="de" class="hyphens negrita">Nombre y apellidos:</span>
             <p lang="de" class="hyphens">{{`${state.nombre}`}}</p>
-            <span lang="de" class="hyphens">Nombre y apellidos de acompañantes:</span>
+            <span lang="de" class="hyphens negrita">Nombre y apellidos de acompañantes:</span>
             <p lang="de" class="hyphens">{{`${checkValue(state.acompaniantesNombre)}`}}</p>
-            <span lang="de" class="hyphens">Número de menus de adulto:</span>
+            <span lang="de" class="hyphens negrita">Número de menus de adulto:</span>
             <p lang="de" class="hyphens">{{`${state.numAdultos}`}}</p>
-            <span lang="de" class="hyphens">Número de menus de niño:</span>
+            <span lang="de" class="hyphens negrita">Número de menus de niño:</span>
             <p lang="de" class="hyphens">{{`${state.numNinios}`}}</p>
-            <span lang="de" class="hyphens">Alergias e intolerancias:</span>
+            <span lang="de" class="hyphens negrita">Alergias e intolerancias:</span>
             <p lang="de" class="hyphens">{{`${checkValue(state.alergias)}`}}</p>
-            <span lang="de" class="hyphens">Irás en autobus:</span>
+            <span lang="de" class="hyphens negrita">Irás en autobus:</span>
             <p lang="de" class="hyphens">{{`${state.bus ? 'Sí' : 'No'}`}}</p>
-            <span lang="de" class="hyphens">Otra información:</span>
+            <span lang="de" class="hyphens negrita">Otra información:</span>
             <p lang="de" class="hyphens">{{`${checkValue(state.observaciones)}`}}</p>
           </div>
           <div style="font-weight:900;display: flex;justify-content: center;">
@@ -217,6 +217,10 @@ const $q = useQuasar()
 <style scoped>
 .hyphens {
   overflow-wrap: break-word;
+}
+
+.negrita{
+  font-weight: 600;
 }
 </style>
 

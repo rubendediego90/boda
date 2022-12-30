@@ -12,7 +12,7 @@
         title="Ceremonia"
         subtitle="13:30H"
         icon="church"
-        body="Un ofreciante dedicará unas palabras. Además hablaran amigos y familiares de los novios."
+        body="Un ofreciante dedicará unas palabras. Además hablarán amigos y familiares de los novios."
         color="pink"
       />
       <q-timeline-entry
@@ -26,7 +26,7 @@
         subtitle="16:00H"
         icon="restaurant"
         color="green"
-        body="Momento de disfrutar del menú, consta con dos platos y postre."
+        body="Momento de disfrutar del menú, consta de entrante, plato principal y postre."
       />
       <q-timeline-entry
         title="Fiesta"
