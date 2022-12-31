@@ -22,7 +22,7 @@ let delayTimer;
 const search = () => {
     clearTimeout(delayTimer);
     delayTimer = setTimeout(function() {
-        itemsFiltred.value = itemsBbdd.value.filter(e => removeAccents(e.nombre).toLowerCase().includes(removeAccents(song.value).toLowerCase()))
+        itemsFiltred.value = itemsBbdd.value.filter(e => removeAccents(e.name).toLowerCase().includes(removeAccents(song.value).toLowerCase()))
     }, 500); // Will do the ajax stuff after 1000 ms, or 1 s
 }
 
