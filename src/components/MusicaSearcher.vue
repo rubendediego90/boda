@@ -68,12 +68,12 @@ const playSong = async (event) => {
         url.value = resp.data.result.download_url
     }
     indexActive.value = event.index
-    setAudio()
+    await setAudio()
     audio.value.play();
 }
 
-const setAudio = ()=>{
-    audio.value = new Audio(url.value)
+const setAudio = async  ()=>{
+    await audio.value = new Audio(url.value)
 }
 
 const addSong = async (event) =>{
