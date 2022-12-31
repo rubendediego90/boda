@@ -12,14 +12,14 @@
         title="Ceremonia"
         subtitle="13:30H"
         icon="church"
-        body="Un ofreciante dedicará unas palabras. Además hablarán amigos y familiares de los novios."
+        body="Un oficiante dedicará unas palabras. Además hablarán amigos y familiares de los novios."
         color="pink"
       />
       <q-timeline-entry
-        title="Coctel"
+        title="Cóctel"
         subtitle="14:30H"
         icon="tapas"
-        body="Se servirá un magnífico coctel, en el cual habrá comida y bebida."
+        body="Se servirá un magnífico cóctel, en el cual habrá comida y bebida."
       />
       <q-timeline-entry
         title="Comida"
