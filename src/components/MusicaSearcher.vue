@@ -1,10 +1,19 @@
 <script setup>
-import { ref,onMounted } from "vue";
+import { ref,onMounted,onUnmounted } from "vue";
 import axios from 'axios'
 import Row from './Row.vue'
 import { useQuasar } from 'quasar'
 import {postMusic} from '../../src/api/music.api'
 const $q = useQuasar()
+
+const props = defineProps({
+    listMusic: {
+        type: Array,
+        required:true,
+    }
+})
+
+const emit = defineEmits(['setListMusic'])
 
 const song = ref('')
 const loading = ref(false)
@@ -35,6 +44,7 @@ const searchList = async ()=>{
             title:item.title,
         } 
     ));
+    emit('setListMusic',listMusic.value)
     loading.value = false
 }
 const stopSong = () => {
@@ -94,7 +104,11 @@ function triggerNegative () {
 
 onMounted(()=>{
     setAudio()
+    if(props.listMusic.length > 0)
+        listMusic.value = props.listMusic
 })
+
+onUnmounted(()=>stopSong())
 </script>
 <template>
  <div style="display: flex;justify-content: center;align-items: center;width:100%">

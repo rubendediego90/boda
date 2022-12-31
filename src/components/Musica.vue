@@ -14,8 +14,7 @@
 
   </q-tabs>
   <MusicList v-if="tab==='list'"/>
-  <MusicSearcher v-if="tab==='add'"/>
-
+  <MusicSearcher v-if="tab==='add'" :listMusic="listMusic" @setListMusic="setListMusic($event)"/>
 
 </template>
 
@@ -26,7 +25,9 @@ import MusicList from './MusicaLista.vue'
 import MusicSearcher from './MusicaSearcher.vue'
 
 const tab = ref('add')
+const listMusic = ref([])
 
+const setListMusic = (event) =>listMusic.value = event
 </script>
 <!--
   import { ref,onMounted } from "vue";
