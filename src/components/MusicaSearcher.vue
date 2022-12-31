@@ -123,7 +123,7 @@ onUnmounted(()=>stopSong())
         <q-icon name="music_note" />
     </template>
     <template v-slot:label>
-        Busca música para añadirla
+        Busca y añade música
     </template>
     </q-input>
 
