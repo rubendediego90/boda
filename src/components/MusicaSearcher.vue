@@ -102,8 +102,8 @@ function triggerNegative () {
         })
       }
 
-onMounted(()=>{
-    setAudio()
+onMounted(async()=>alert("hola")
+    await setAudio()
     if(props.listMusic.length > 0)
         listMusic.value = props.listMusic
 })
