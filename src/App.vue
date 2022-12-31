@@ -1,6 +1,6 @@
 <script setup>
 import ButtonDesplegable from './components/ButtonDesplegable.vue'
-import img from "./assets/manos.jpg";
+import img from "./assets/manos.jpeg";
 import Asistencia from "./components/Asistencia.vue"
 import Inicio from "./components/Inicio.vue"
 import Itinerario from "./components/Itinerario.vue"
