@@ -12,11 +12,11 @@
         :label-style="{ color:'white',width:'75px' }"
       >
         <q-fab-action @click="$emit('handleTabSelected','Inicio')"  color="warning" icon="favorite" label="Inicio" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
-        <q-fab-action @click="$emit('handleTabSelected','Lugar')"  color="accent"  icon="room" label="Lugar" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
+        <q-fab-action @click="$emit('handleTabSelected','Lugar')"  color="secondary"  icon="room" label="Lugar" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
         <q-fab-action @click="$emit('handleTabSelected','Asistencia')"  color="warning"  icon="group_add" label="Asistencia" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
-        <q-fab-action @click="$emit('handleTabSelected','Itinerario')" color="accent"  icon="alarm" label="Itinerario" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
+        <q-fab-action @click="$emit('handleTabSelected','Itinerario')" color="secondary"  icon="alarm" label="Itinerario" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
         <q-fab-action @click="$emit('handleTabSelected','Regalos')" color="warning"  icon="card_giftcard" label="Regalos" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
-        <q-fab-action @click="$emit('handleTabSelected','Música')" color="accent"  icon="music_note" label="Música" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
+        <q-fab-action @click="$emit('handleTabSelected','Música')" color="secondary"  icon="music_note" label="Música" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
         <q-fab-action @click="$emit('handleTabSelected','Autobus')" color="warning"  icon="airport_shuttle" label="Autobus" :label-style="{ color:'white',width:'60px',fontSize: '80%',padding:0 }" padding="5px"/>
       </q-fab>
 </template>

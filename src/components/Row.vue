@@ -18,6 +18,7 @@ const props = defineProps({
 })
 const loading = ref(false)
 const emit = defineEmits(['addSong','stopSong','playSong'])
+const block = false
 
 const addSong = () => emit('addSong',props.row)
 
@@ -30,11 +31,11 @@ const playSong = () => emit('playSong',{index:props.index,idSong:props.row.id})
 
 <template>
     <div style=" display: flex;justify-content: space-between;align-items: center;background-color: black;border-radius: 5px;margin-bottom: 0.2rem; " :class="{playing:props.index == props.indexActive}">
-        <div>
+        <div v-if="block">
             <q-btn v-if="props.index !== props.indexActive" color="transparent" icon="play_circle" :disable="loading" @click="playSong()" />
             <q-btn v-if="props.index == props.indexActive" color="transparent" icon="pause_circle" :disable="loading" @click="stopSong() " />
         </div>
-        <div style="color:white;text-align: center">{{ row.name }}</div>
+        <div style="color:white;text-align: center;margin-left:0.5rem">{{ row.name }}</div>
         <div>
             <q-btn color="transparent" icon="playlist_add" :disable="loading" @click="addSong()"/>
         </div>

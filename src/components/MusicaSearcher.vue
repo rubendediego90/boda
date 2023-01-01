@@ -41,7 +41,6 @@ const searchList = async ()=>{
         {
             id: item.id,
             name: item.name,
-            title:item.title,
         } 
     ));
     emit('setListMusic',listMusic.value)
