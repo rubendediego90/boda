@@ -110,6 +110,13 @@ onMounted(()=>{
 onUnmounted(()=>stopSong())
 </script>
 <template>
+        <audio
+        controls
+        :src="url">
+            <a :href="url">
+                Download audio
+            </a>
+    </audio>
  <div style="display: flex;justify-content: center;align-items: center;width:100%">
     <q-form
     @submit="searchList()"
