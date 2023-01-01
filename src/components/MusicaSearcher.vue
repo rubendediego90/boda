@@ -108,15 +108,23 @@ onMounted(()=>{
 })
 
 onUnmounted(()=>stopSong())
+
+function playPause() {
+       var song = document.getElementsByTagName('audio')[0];
+       if (song.paused)
+           song.play();
+       else
+           song.pause();
+       }
+
 </script>
 <template>
-        <audio
-        controls
-        :src="url">
-            <a :href="url">
-                Download audio
-            </a>
-    </audio>
+
+    <q-btn icon="play_circle" @click="playPause()" />
+        <audio>
+            <source :src="url" type="audio/mpeg" />
+            Your browser does not support HTML5 audio.
+        </audio>
  <div style="display: flex;justify-content: center;align-items: center;width:100%">
     <q-form
     @submit="searchList()"
