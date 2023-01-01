@@ -67,12 +67,12 @@ const playSong = async (event) => {
         url.value = resp.data.result.download_url
     }
     indexActive.value = event.index
-    await setAudio()
+    setAudio()
     audio.value.play();
 }
 
-const setAudio = async  ()=>{
-    await audio.value = new Audio(url.value)
+const setAudio = ()=>{
+    audio.value = new Audio(url.value)
 }
 
 const addSong = async (event) =>{
@@ -101,8 +101,8 @@ function triggerNegative () {
         })
       }
 
-onMounted(async()=>alert("hola")
-    await setAudio()
+onMounted(()=>{
+    setAudio()
     if(props.listMusic.length > 0)
         listMusic.value = props.listMusic
 })

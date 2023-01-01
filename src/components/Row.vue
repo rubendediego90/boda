@@ -35,7 +35,8 @@ const playSong = () => emit('playSong',{index:props.index,idSong:props.row.id})
             <q-btn v-if="props.index !== props.indexActive" color="transparent" icon="play_circle" :disable="loading" @click="playSong()" />
             <q-btn v-if="props.index == props.indexActive" color="transparent" icon="pause_circle" :disable="loading" @click="stopSong() " />
         </div>
-        <div style="color:white;text-align: center;margin-left:0.5rem">{{ row.name }}</div>
+        <div style="color:white;margin-left:0.5rem">{{ row.name }}</div>
+        <!--<div style="color:white;text-align: center;margin-left:0.5rem">{{ row.name }}</div>-->
         <div>
             <q-btn color="transparent" icon="playlist_add" :disable="loading" @click="addSong()"/>
         </div>
