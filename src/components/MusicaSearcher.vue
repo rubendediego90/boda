@@ -1,5 +1,5 @@
 <script setup>
-import { ref,onMounted,onUnmounted } from "vue";
+import { ref,onMounted } from "vue";
 import axios from 'axios'
 import Row from './Row.vue'
 import { useQuasar } from 'quasar'
@@ -18,61 +18,86 @@ const emit = defineEmits(['setListMusic'])
 const song = ref('')
 const loading = ref(false)
 const RAPID_KEY = '1c1c6def9fmsh3e4dbfb60fb4870p12f89ejsn5aa2f5453658'
-const url = ref("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
 const indexActive = ref(null)
-const indexOld= ref(null)
-const audio = ref(null)
 const listMusic = ref([])
 const okDialog = ref(false)
 
-const searchList = async ()=>{
-    loading.value = true
-    const options = {
-        method: 'GET',
-        url: 'https://youtube-music1.p.rapidapi.com/v2/search',
-        params: {query: song.value},
-        headers: {
-            'X-RapidAPI-Key': RAPID_KEY,
-            'X-RapidAPI-Host': 'youtube-music1.p.rapidapi.com'
-        }
-    };
-    const resp = await axios.request(options)
-    listMusic.value = resp.data.result.songs.map(item=>(
-        {
-            id: item.id,
-            name: item.name,
-        } 
-    ));
-    emit('setListMusic',listMusic.value)
-    loading.value = false
-}
-const stopSong = () => {
-    indexOld.value = indexActive.value
-    indexActive.value = null
-    audio.value.pause();
-}
-
-const playSong = async (event) => {
-    if(indexOld.value !== event.index){
-        const optionsReproductor = {
+const searcherYoutube = async () =>{
+    try {
+        const options = {
             method: 'GET',
-            url: 'https://youtube-music1.p.rapidapi.com/get_download_url',
-            params: {id: event.idSong, ext: 'mp3'},
+            url: 'https://youtube-music1.p.rapidapi.com/v2/search',
+            params: {query: song.value},
             headers: {
                 'X-RapidAPI-Key': RAPID_KEY,
                 'X-RapidAPI-Host': 'youtube-music1.p.rapidapi.com'
             }
         };
-        const resp = await axios.request(optionsReproductor)
-        url.value = resp.data.result.download_url
+        const resp = await axios.request(options)
+        if(resp.data.result.songs === undefined) return false
+        listMusic.value = resp.data.result.songs.map(item=>(
+            {
+                id: item.id,
+                name: item.name,
+            } 
+        ));   
+        return true     
+    } catch (error) {
+        console.error(error) 
+        return false
     }
-    indexActive.value = event.index
-    setAudio()
-    audio.value.play();
 }
 
-const setAudio = ()=>{
-    audio.value = new Audio(url.value)
+const searcherSpotify = async ()=>{
+    try {
+        const options = {
+        method: 'GET',
+        url: 'https://spotify23.p.rapidapi.com/search/',
+        params: {
+            q:song.value,
+            type: 'multi',
+            offset: '0',
+            limit: '20',
+            numberOfTopResults: '5'
+        },
+        headers: {
+            'X-RapidAPI-Key': RAPID_KEY,
+            'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+        }
+    };
+    const resp = await axios.request(options)
+    listMusic.value = resp.data.tracks.items.map(item=>{
+        const {id,name,artists} = item.data
+        const cantante = artists.items[0].profile.name
+        const obj =  {
+            id: id,
+            name: `${name} - ${cantante}`,
+        } 
+    return obj
+    });   
+    return true     
+    } catch (error) {
+        console.error(error) 
+        return false
+    }
+}
+
+const checkHaveList = (isFinish)=>{
+    if(isFinish){
+        emit('setListMusic',listMusic.value)
+    }
+    else{
+        triggerNegative('al buscar la música')
+    }
+}
+
+const searchList = async ()=>{
+    loading.value = true
+    let isFinish = false
+    if(!isFinish) isFinish = await searcherSpotify()
+    if(!isFinish) isFinish = await searcherYoutube()
+    checkHaveList(isFinish)
+    loading.value = false
 }
 
 const addSong = async (event) =>{
@@ -83,32 +108,27 @@ const addSong = async (event) =>{
     if(resp.status === 200){
         okDialog.value=true
     }else{
-        triggerNegative()
-        console.log('error')
+        triggerNegative('al añadir la música')
     }
     }
     catch(error){
       console.error(error)
-      triggerNegative()
+      triggerNegative('al añadir la música')
     }finally{
       loading.value=false
     }
 }
-function triggerNegative () {
+function triggerNegative (tipeError) {
         $q.notify({
           type: 'negative',
-          message: 'Ocurrió un error, por favor contacta con nosotros.'
+          message: `Ocurrió un error ${tipeError}, por favor contacta con nosotros.`
         })
       }
 
 onMounted(()=>{
-    setAudio()
     if(props.listMusic.length > 0)
         listMusic.value = props.listMusic
 })
-
-onUnmounted(()=>stopSong())
-
 
 </script>
 <template>
