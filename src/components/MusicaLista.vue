@@ -43,22 +43,6 @@ onMounted(async()=>{
 </script>
   
   <template>
-    <div style="display: flex;justify-content: center;align-items: center;width:100%">
-        <q-form
-          class="q-gutter-md"
-          style="width:95%;display: flex;flex-direction: row;align-items: center;"
-        >
-          <q-input @keydown="search()" color="blue-12" v-model="song" lazy-rules label-slot style="width:100%;padding-top:0.5rem ;"
-          :rules="[ val => val && val.length > 0 || 'Campo obligatorio']">
-            <template v-slot:prepend>
-              <q-icon name="music_note" />
-            </template>
-            <template v-slot:label>
-              Busca música ya añadida
-            </template>
-          </q-input>
-        </q-form>
-      </div>
       <q-table
       v-if="loadingFirst"
         style="margin:1rem"
