@@ -1,7 +1,7 @@
 <template>
   <Title title="Música"/>
     <div class="col-12 column" style="padding-top:1rem;padding-left: 1rem;padding-right: 1rem;">
-      <p class="text-justify">¡Ayudanos con la música! Añade tus canciones favoritas para disfrutar de ellas en la fiesta después de la cómida. Además puedes ver la música añadida por el resto de invitados.</p>
+      <p class="text-justify">¡Ayudanos con la música! Añade tus canciones favoritas para disfrutar de ellas en la fiesta después de la comida. Además puedes ver la música añadida por el resto de invitados.</p>
     </div>
   <q-tabs
     v-model="tab"
