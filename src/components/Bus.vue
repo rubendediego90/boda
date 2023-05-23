@@ -8,7 +8,7 @@
       <ul>
         <li>
           <p class="text-justify title-p">Ida a la Vega del Henares</p>
-          <p class="text-justify">Salida desde Madrid. Ministerio de Agricultura (Paseo Santa Isabel Nº1 - Enfrente de Atocha) <u><strong>12:00</strong></u>.</p>
+          <p class="text-justify">Salida desde Madrid. Ministerio de Agricultura (Paseo Infanta Isabel Nº1 - Enfrente de Atocha) <u><strong>12:00</strong></u>.</p>
           <p class="text-justify">Salida desde Alcalá de Henares. Vía Complutense Nº32 (Enfrente de comisiones obreras) a las <u><strong>12:30</strong></u>.</p>
         </li>
         <li>
