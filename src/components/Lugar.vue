@@ -10,7 +10,7 @@
       <span class="text-justify">Os esperamos en <strong><u>La Vega del Henares</u></strong> donde celebraremos nuestro matrimonio junto a nuestros seres queridos.</span>
     </div>
     <div style="display: flex;justify-content: center;align-items: center;">
-        <a href="http://maps.google.com/?q=Carretera Madrid Barcelona, 0 Km 33, N-II, 28801 Alcalá de Henares, Madrid" style="text-decoration: none;">
+        <a href="http://maps.google.com/?q=La Vega del henares" style="text-decoration: none;">
           <q-btn color="black" icon="map" label="Ir a Google Maps" rounded/>
         </a>
       </div>
